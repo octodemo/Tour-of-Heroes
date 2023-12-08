@@ -120,4 +120,10 @@ export class HeroService {
   private log(message: string) {
     this.messageService.add(`HeroService: ${message}`);
   }
+
+  getHeroesAlphabetically(): Observable<Hero[]> {
+    return this.getHeroes().pipe(
+      map(heroes => heroes.sort((a, b) => a.name.localeCompare(b.name)))
+    );
+  }
 }
